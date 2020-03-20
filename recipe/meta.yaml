@@ -11,7 +11,10 @@ source:
 
 build:
   number: 0
-  script: SETUPTOOLS_SCM_PRETEND_VERSION={{ version }} {{ PYTHON }} -m pip install . --no-deps --global-option="--openmp" -vv
+  script:
+    - export SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}    # [unix]
+    - set SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}    # [win]
+    - {{ PYTHON }} -m pip install . --no-deps --global-option="--openmp" -vv
 
 requirements:
   build:
