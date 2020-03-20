@@ -17,10 +17,11 @@ requirements:
   build:
     - llvm-openmp
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
     - llvm-openmp
     - pip
-    - python >=3.5
+    - python
     - setuptools >=45
     - setuptools_scm >=3.4
     - cython >=0.28.3
