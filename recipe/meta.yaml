@@ -1,38 +1,43 @@
 {% set name = "gstools" %}
-{% set version = "1.1.1" %}
+{% set version = "1.2.0" %}
 
 package:
-  name: "{{ name|lower }}"
-  version: "{{ version }}"
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  url: "https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz"
-  sha256: 4fcc6d664d2a47d201c7f0e01988c759cd1741d51c87753cbb1ee00e4ce75335
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: 3be5f1a6f33805cc2c4de8fb6feaede5e957c41da19c020b774c08ea9168578c
 
 build:
   number: 0
-  script: "{{ PYTHON }} -m pip install . --no-deps --global-option=\"--openmp\" -vv"
+  script:
+    - export SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}    # [unix]
+    - set SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}    # [win]
+    - {{ PYTHON }} -m pip install . --no-deps --global-option="--openmp" -vv   # [not (osx and py==37)]
+    - {{ PYTHON }} -m pip install . --no-deps -vv                              # [osx and py==37]
 
 requirements:
   build:
-    - llvm-openmp  # [not (win and py2k)]
+    - llvm-openmp  # [not (osx and py==37)]
     - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
   host:
-    - llvm-openmp  # [not (win and py2k)]
-    - python
+    - llvm-openmp  # [not (osx and py==37)]
     - pip
-    - setuptools
+    - python
+    - setuptools >=45
+    - setuptools_scm >=3.4
     - cython >=0.28.3
     - numpy >=1.14.5
   run:
-    - llvm-openmp  # [not (win and py2k)]
+    - llvm-openmp  # [not (osx and py==37)]
     - python
     - {{ pin_compatible('numpy') }}
     - scipy >=1.1.0
     - emcee >=3.0.0
-    - hankel >=0.3.6
-    - pyevtk
-    - six
+    - hankel >=1.0.2
+    - pyevtk >=1.1.1
 
 test:
   imports:
@@ -45,11 +50,11 @@ test:
     - pytest -vv tests
 
 about:
-  home: "https://github.com/GeoStat-Framework/GSTools"
-  license: "GNU Lesser General Public v3 (LGPLv3)"
+  home: https://github.com/GeoStat-Framework/GSTools
+  license: GNU Lesser General Public v3 (LGPLv3)
   license_family: LGPL
   license_file: LICENSE
-  summary: "GSTools: A geostatistical toolbox."
+  summary: 'GSTools: A geostatistical toolbox.'
   description: |
     GeoStatTools provides geostatistical tools for various purposes:
     - random field generation
