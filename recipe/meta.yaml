@@ -11,28 +11,28 @@ source:
 
 build:
   number: 0
-  script: {{ PYTHON }} -m pip install . --no-deps --global-option="--openmp" -vv
+  script: SETUPTOOLS_SCM_PRETEND_VERSION={{ version }} {{ PYTHON }} -m pip install . --no-deps --global-option="--openmp" -vv
 
 requirements:
   build:
-    - llvm-openmp  # [not (win and py2k)]
+    - llvm-openmp
     - {{ compiler('c') }}
   host:
-    - llvm-openmp  # [not (win and py2k)]
-    - python
+    - llvm-openmp
     - pip
-    - setuptools
+    - python >=3.5
+    - setuptools >=45
+    - setuptools_scm >=3.4
     - cython >=0.28.3
     - numpy >=1.14.5
   run:
-    - llvm-openmp  # [not (win and py2k)]
+    - llvm-openmp
     - python
     - {{ pin_compatible('numpy') }}
     - scipy >=1.1.0
     - emcee >=3.0.0
-    - hankel >=0.3.6
-    - pyevtk
-    - six
+    - hankel >=1.0.2
+    - pyevtk >=1.1.1
 
 test:
   imports:
