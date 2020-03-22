@@ -14,16 +14,16 @@ build:
   script:
     - export SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}    # [unix]
     - set SETUPTOOLS_SCM_PRETEND_VERSION={{ version }}    # [win]
-    - {{ PYTHON }} -m pip install . --no-deps --global-option="--openmp" -vv   # [not (osx and py>=37)]
-    - {{ PYTHON }} -m pip install . --no-deps -vv                              # [osx and py>=37]
+    - {{ PYTHON }} -m pip install . --no-deps --global-option="--openmp" -vv   # [not (osx and py>=37 or win)]
+    - {{ PYTHON }} -m pip install . --no-deps -vv                              # [osx and py>=37 or win]
 
 requirements:
   build:
-    - llvm-openmp  # [not (osx and py>=37)]
+    - llvm-openmp  # [not (osx and py>=37 or win)]
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
   host:
-    - llvm-openmp  # [not (osx and py>=37)]
+    - llvm-openmp  # [not (osx and py>=37 or win)]
     - pip
     - python
     - setuptools >=45
@@ -31,7 +31,7 @@ requirements:
     - cython >=0.28.3
     - numpy >=1.14.5
   run:
-    - llvm-openmp  # [not (osx and py>=37)]
+    - llvm-openmp  # [not (osx and py>=37 or win)]
     - python
     - {{ pin_compatible('numpy') }}
     - scipy >=1.1.0
