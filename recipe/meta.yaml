@@ -10,7 +10,7 @@ source:
   sha256: 14f6b1f276c63b03260d0159afab122dfc4e122dd58676f684d25d8ec33eb016
 
 build:
-  number: 0
+  number: 1
   script:
     - {{ PYTHON }} -m pip install . --no-deps --global-option="--openmp" -vv
 
