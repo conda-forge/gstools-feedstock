@@ -11,8 +11,10 @@ source:
 
 build:
   number: 0
+  script_env:
+   - GSTOOLS_BUILD_PARALLEL=1
   script:
-    - {{ PYTHON }} -m pip install . --no-deps --global-option="--openmp" -vv
+    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation -vv
 
 requirements:
   build:
@@ -23,18 +25,20 @@ requirements:
     - llvm-openmp
     - pip
     - python
+    - toml
     - setuptools >=45
-    - setuptools_scm >=3.4
-    - cython >=0.28.3
-    - numpy >=1.14.5
+    - setuptools_scm >=3.5
+    - cython >=0.28.3, <2.0
+    - numpy >=1.14.5, <3.0
   run:
     - llvm-openmp
     - python
     - {{ pin_compatible('numpy') }}
-    - scipy >=1.1.0
-    - emcee >=3.0.0
-    - hankel >=1.0.2
-    - pyevtk >=1.1.1
+    - scipy >=1.1.0, <2.0
+    - emcee >=3.0.0, <4.0
+    - hankel >=1.0.2, <2.0
+    - pyevtk >=1.1.1, <2.0
+    - meshio >=4.0.3, <5.0
 
 test:
   imports:
@@ -55,13 +59,16 @@ about:
   description: |
     GeoStatTools provides geostatistical tools for various purposes:
     - random field generation
+    - simple, ordinary, universal and external drift kriging
     - conditioned field generation
     - incompressible random vector field generation
-    - simple and ordinary kriging
-    - variogram estimation and fitting
+    - (automatted) variogram estimation and fitting
+    - directional variogram estimation and modelling
+    - data normalization and transformation
     - many readily provided and even user-defined covariance models
+    - metric spatio-temporal modelling
     - plotting and exporting routines
-  doc_url: https://geostat-framework.readthedocs.io/projects/gstools
+  doc_url: https://gstools.readthedocs.io
   dev_url: https://github.com/GeoStat-Framework/GSTools
 
 extra:
