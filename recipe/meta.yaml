@@ -10,6 +10,7 @@ source:
   sha256: 3187fc800b3ae0245bef391dc492f0d7256d980dd8c488e36274f53aba9e6226
 
 build:
+  skip: True         # [python_impl == 'pypy']
   number: 0
   script_env:
     - GSTOOLS_BUILD_PARALLEL=1
