@@ -39,7 +39,7 @@ requirements:
     - emcee >=3.0.0, <4.0
     - hankel >=1.0.2, <2.0
     - pyevtk >=1.1.1, <2.0
-    - meshio >=4.0.3, <5.0
+    - meshio >=4.0.3, <6.0
 
 test:
   imports:
@@ -53,7 +53,7 @@ test:
 
 about:
   home: https://github.com/GeoStat-Framework/GSTools
-  license: GNU Lesser General Public v3 (LGPLv3)
+  license: LGPL-3.0-or-later
   license_family: LGPL
   license_file: LICENSE
   summary: 'GSTools: A geostatistical toolbox.'
