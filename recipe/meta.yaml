@@ -34,11 +34,11 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - scipy >=1.1.0, <2.0
-    - emcee >=3.0.0, <4.0
-    - hankel >=1.0.2, <2.0
-    - pyevtk >=1.1.1, <2.0
-    - meshio >=4.0.3, <6.0
+    - scipy >=1.1.0
+    - emcee >=3.0.0
+    - hankel >=1.0.0
+    - pyevtk >=1.1.1
+    - meshio >=4.0.0
 
 test:
   imports:
