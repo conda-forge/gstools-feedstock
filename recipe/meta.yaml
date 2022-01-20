@@ -1,5 +1,5 @@
 {% set name = "gstools" %}
-{% set version = "1.3.4" %}
+{% set version = "1.3.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 759b8dbc9a490438da78b5b12c31a8e7c73a253c7ffdbed63ccf5af261e690e3
+  sha256: d332158f2608c85a1648028a79de06dd349beb8fbed60805f9ff3643c95740b9
 
 build:
   skip: true  # [python_impl == 'pypy']
@@ -34,11 +34,11 @@ requirements:
   run:
     - python
     - {{ pin_compatible('numpy') }}
-    - scipy >=1.1.0, <2.0
-    - emcee >=3.0.0, <4.0
-    - hankel >=1.0.2, <2.0
-    - pyevtk >=1.1.1, <2.0
-    - meshio >=4.0.3, <6.0
+    - scipy >=1.1.0
+    - emcee >=3.0.0
+    - hankel >=1.0.0
+    - pyevtk >=1.1.1
+    - meshio >=4.0.0
 
 test:
   imports:
