@@ -31,10 +31,11 @@ requirements:
     - pip
     - python
     - toml
-    - setuptools >=45
-    - setuptools_scm >=3.5
+    - setuptools >=62
+    - setuptools_scm >=6.4
     - cython >=0.28.3, <3.0
     - numpy
+    - extension-helpers
   run:
     - python
     - {{ pin_compatible('numpy') }}
@@ -42,7 +43,7 @@ requirements:
     - emcee >=3.0.0
     - hankel >=1.0.0
     - pyevtk >=1.1.1
-    - meshio >=4.0.0
+    - meshio >=5.1.0
 
 test:
   imports:
