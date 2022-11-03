@@ -1,5 +1,5 @@
 {% set name = "gstools" %}
-{% set version = "1.4.0" %}
+{% set version = "1.4.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: f1622a1fae645fa6d3863a83553a3f0519b0bb61a84820c0c4b9f9f180747893
+  sha256: 59db1bfc36fdf05f54a3e0740559f108ca33befb60d8aa8534fd3f163bb491b4
 
 build:
   skip: true  # [python_impl == 'pypy']
-  number: 1
+  number: 0
   script_env:
     - GSTOOLS_BUILD_PARALLEL=1               # [build_platform == target_platform]
   script:
