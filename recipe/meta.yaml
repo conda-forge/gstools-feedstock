@@ -1,5 +1,5 @@
 {% set name = "gstools" %}
-{% set version = "1.4.1" %}
+{% set version = "1.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 59db1bfc36fdf05f54a3e0740559f108ca33befb60d8aa8534fd3f163bb491b4
+  sha256: 23eccd9c0ba55299e9b241ba1b1749827e47b1932c346d22377510d4a0d7fd03
 
 build:
   skip: true  # [python_impl == 'pypy']
