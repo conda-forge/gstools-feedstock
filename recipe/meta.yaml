@@ -10,6 +10,7 @@ source:
   sha256: 806dc294fec5028bf0399d9c8df30538c39aff2093828d093b9599835a61b802
 
 build:
+  noarch: python
   skip: true  # [python_impl == 'pypy']
   number: 2
   script_env:
@@ -77,6 +78,10 @@ about:
   dev_url: https://github.com/GeoStat-Framework/GSTools
 
 extra:
+  anaconda-services:
+    ref: https://anaconda.zendesk.com/agent/tickets/49247
+    reason: Client request
   recipe-maintainers:
+    - ianaobi
     - MuellerSeb
     - LSchueler

@@ -1,0 +1,11 @@
+aggregate_check: false
+
+upload_without_merge: true
+
+content_signing: {'win-64': False}
+
+upload_channels:
+  - services
+
+channels:
+  - services
