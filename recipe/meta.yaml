@@ -11,7 +11,7 @@ source:
 
 build:
   skip: true  # [python_impl == 'pypy']
-  number: 0
+  number: 1
   script_env:
     - GSTOOLS_BUILD_PARALLEL=1
   script:
